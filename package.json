@@ -1,0 +1,16 @@
+{
+  "name": "websocketapp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Barbara",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "scripts": {
+    "start": "npx nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
