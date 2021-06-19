@@ -5,7 +5,8 @@
   "author": "Barbara",
   "license": "MIT",
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "socket.io": "2.2.0"
   },
   "scripts": {
     "start": "npx nodemon server.js"
