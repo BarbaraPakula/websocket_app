@@ -19,6 +19,7 @@ loginForm.addEventListener('submit', e => {
       userName = userNameInput.value;
       loginForm.classList.toggle('show');
       messagesSection.classList.toggle('show');
+      socket.emit('join', userName);
     } else {
       alert('You have to log in- type your name');
     }
