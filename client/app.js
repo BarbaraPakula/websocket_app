@@ -10,6 +10,24 @@ let userName = '';
 
 const socket = io();
 socket.on('message', ({ author, content }) => addMessage(author, content))
+socket.on('newJoinChat', ({ author, content }) => addMessage(author, content));
+socket.on('userLeftChat', ({ author, content }) => addMessage(author, content));
+
+const addMessage = (author, content) => {
+  const message = document.createElement('li');
+  message.classList.add('message');
+  message.classList.add('message--received');
+  if (author === userName) message.classList.add('message--self');
+  if(author === 'ChatBot') message.classList.add('message--bot');
+
+  message.innerHTML = `
+      <h3 class="message__author">${userName === author ? 'You' : author}</h3>
+      <div class="message__content">
+        ${content}
+      </div>
+    `;
+  messagesList.appendChild(message);
+}
 
 
 loginForm.addEventListener('submit', e => {
@@ -43,16 +61,4 @@ addMessageForm.addEventListener('submit', e => {
   sendMessage();
 })
 
-const addMessage = (author, content) => {
-  const message = document.createElement('li');
-  message.classList.add('message');
-  message.classList.add('message--received');
-  if (author === userName) message.classList.add('message--self');
-  message.innerHTML = `
-      <h3 class="message__author">${userName === author ? 'You' : author}</h3>
-      <div class="message__content">
-        ${content}
-      </div>
-    `;
-  messagesList.appendChild(message);
-}
+
